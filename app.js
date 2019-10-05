@@ -5,6 +5,15 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var config = require('./config');
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('db connect')
+});
 
 var indexRouter = require('./routes/index');
 var newsRouter = require('./routes/news');
@@ -12,6 +21,8 @@ var quizRouter = require('./routes/quiz');
 var adminRouter = require('./routes/admin');
 
 var app = express();
+// sphiFgHUY7uJ3d8l
+// mongodb+srv://czauder:sphiFgHUY7uJ3d8l@cluster0-czbhp.mongodb.net/admin?retryWrites=true&w=majority
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
