@@ -1,28 +1,26 @@
-var createError = require('http-errors');
-var cookieSession = require('cookie-session');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var config = require('./config');
-var mongoose = require('mongoose');
+const createError = require('http-errors');
+const cookieSession = require('cookie-session');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const config = require('./config');
+const mongoose = require('mongoose');
 
 mongoose.connect(config.db, {useNewUrlParser: true});
 
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log('db connect')
 });
 
-var indexRouter = require('./routes/index');
-var newsRouter = require('./routes/news');
-var adminRouter = require('./routes/admin');
-var apiRouter = require('./routes/api');
+const indexRouter = require('./routes/index');
+const newsRouter = require('./routes/news');
+const adminRouter = require('./routes/admin');
+const apiRouter = require('./routes/api');
 
-var app = express();
-// sphiFgHUY7uJ3d8l
-// mongodb+srv://czauder:sphiFgHUY7uJ3d8l@cluster0-czbhp.mongodb.net/admin?retryWrites=true&w=majority
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
