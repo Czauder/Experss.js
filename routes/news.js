@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
       created: -1
     });
 
-  findNews.exec((err, data) => {
+  findNews.exec((err, data=[]) => {
     console.log(data);
 
     res.render('news', {
